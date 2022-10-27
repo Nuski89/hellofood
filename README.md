@@ -11,3 +11,14 @@ POS Interface 2
 Dashbord
 ![2022-10-28_2-41-17](https://user-images.githubusercontent.com/10183305/198400306-2133b7c6-0424-4e74-9b46-4bfb57741f71.png)
 
+Sales list
+![2022-10-28_2-41-59](https://user-images.githubusercontent.com/10183305/198400542-d656aa39-3137-49c4-945b-7b8bd13cc6a7.png)
+
+Payment 
+![2022-10-28_2-42-22](https://user-images.githubusercontent.com/10183305/198400588-d548b5ad-7e81-4719-bb98-d3f088c70ff0.png)
+
+Product list
+![2022-10-28_2-41-42](https://user-images.githubusercontent.com/10183305/198400645-e6cfc2af-2589-4d58-950b-246e4731a283.png)
+
+Customer list
+![2022-10-28_2-52-33](https://user-images.githubusercontent.com/10183305/198400803-757d8b85-c3dc-44b5-8454-25d7d7bef625.png)
