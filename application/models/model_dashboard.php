@@ -9,10 +9,11 @@ class Model_dashboard extends CI_Model{
     }
 
     function fetch_sale_details(){
+        $date               = date('Y-m-d');
         $company_auto_id    = $this->_['company_auto_id'];
         $branch_auto_id     = $this->_['branch_auto_id'];
         $transactions       = $this->db->dbprefix('transactions');
-        return $this->db->query("SELECT sum(net_amount) AS total,sum( CASE WHEN status = 3 THEN net_amount ELSE 0 END ) AS pending,sum( CASE WHEN status = 4 THEN net_amount ELSE 0 END ) AS sales,sum( CASE WHEN status = 5 THEN net_amount ELSE 0 END ) AS void,sum( CASE WHEN status = 6 THEN net_amount ELSE 0 END ) AS return_ FROM {$transactions} where branch_auto_id={$branch_auto_id} and company_auto_id={$company_auto_id} AND YEAR ( transaction_date ) = YEAR (CURRENT_DATE()) AND MONTH ( transaction_date ) = MONTH (CURRENT_DATE()) AND transaction_type = 1")->row_array();
+        return $this->db->query("SELECT sum(net_amount) AS total,sum( CASE WHEN status = 3 THEN net_amount ELSE 0 END ) AS pending,sum( CASE WHEN status = 4 THEN net_amount ELSE 0 END ) AS sales,sum( CASE WHEN status = 5 THEN net_amount ELSE 0 END ) AS void,sum( CASE WHEN status = 6 THEN net_amount ELSE 0 END ) AS return_ FROM {$transactions} where branch_auto_id={$branch_auto_id} and company_auto_id={$company_auto_id} AND YEAR ( transaction_date ) = YEAR (CURRENT_DATE()) AND MONTH ( transaction_date ) = MONTH (CURRENT_DATE()) AND transaction_type = 1 AND transaction_date = '{$date}' ")->row_array();
     }
 
     function fetch_employee_details(){
