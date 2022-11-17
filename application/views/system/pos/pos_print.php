@@ -53,12 +53,13 @@
     }
     ?>
     <?php if (!empty($sales)) { ?>
+    <p style="text-align:center; font-weight:bold;font-size:16px; padding-top:2px;" colspan="2">Items <?php echo $num.' [ '.$qty.' ]'; ?></p>
     <table class="table table-condensed" cellspacing="0" border="0" style="margin-bottom:5px;">
         <tbody>
             <tr>
-                <td>Items <?php echo $num.' [ '.$qty.' ]'; ?></td>
-                <td class="text-right">DISC <?php echo to_local_currency($sales['sales_discount']); ?></td>
+                <td colspan="2" >DISC <?php echo to_local_currency($sales['sales_discount']); ?> / TAX <?php echo to_local_currency($sales['sales_tax']); ?></td>
             </tr>
+            <?php $total -= $sales['sales_discount']; $total += $sales['sales_tax']; ?>
             <tr>
                 <td style="text-align:left; font-weight:bold;font-size:16px; padding-top:5px;">Grand Total</td>
                 <td style="border-top:1px dashed #000; padding-top:5px; text-align:right; font-weight:bold;font-size:16px;"><?php echo to_local_currency($total); ?></td>
@@ -78,7 +79,7 @@
         <span>The aromas</span>
         <span class="text-right">Tel : <?php echo $company['branch_mobile']; ?></span>
         <center><?php echo $company['branch_receipt_footer']; ?><br><?php echo $company['branch_return_policy']; ?></center>
-        <center><p style="font-size:11px;">Developed By : Designer Pex <br> Tel : 0094 773 988 383/0094 769 009 108</p></center>
+        <center><p style="font-size:11px;">Developed By : Designer Pex <br> Tel : 0094 773 988 383</p></center>
     </div>
 </div>
 </center>

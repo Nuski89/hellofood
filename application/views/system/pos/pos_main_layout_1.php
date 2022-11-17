@@ -1242,7 +1242,7 @@ function cal_net_total(){
         window.tax    = percentage(window.net_total, parseFloat(isNaN(parseFloat($('#tax').val())) ? 0 : parseFloat($('#tax').val())));
     }
     $('.tax_text').html(to_currency(window.tax));
-    window.net_total            -=window.tax;
+    window.net_total            +=window.tax;
     $('.net_total').html(to_currency(window.net_total));
     calculate_balance();
 }

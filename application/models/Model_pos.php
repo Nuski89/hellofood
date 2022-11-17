@@ -351,10 +351,10 @@ class Model_pos extends CI_Model{
         $this->db->trans_complete();
         if($this->db->trans_status()===0){
             $this->db->trans_rollback();
-            $log = $this->logger->log_event(0,$this->lang->line('purchase_invoice_module'),5,$this->lang->line('common_delete_failed'),$this->lang->line('purchase_invoice_module'),$hold_auto_id);
+            $log = $this->logger->log_event(0,$this->lang->line('purchase_invoice_module'),5,$this->lang->line('common_delete_failed'),$this->lang->line('purchase_invoice_module'),$sales_auto_id);
         }else{
             $this->db->trans_commit();
-            $log = $this->logger->log_event(1,$this->lang->line('purchase_invoice_module'),2,$this->lang->line('common_delete_successfully'),$this->lang->line('purchase_invoice_module'),$hold_auto_id);            
+            $log = $this->logger->log_event(1,$this->lang->line('purchase_invoice_module'),2,$this->lang->line('common_delete_successfully'),$this->lang->line('purchase_invoice_module'),$sales_auto_id);            
         }
         return $log;
     }
@@ -426,22 +426,24 @@ class Model_pos extends CI_Model{
         $sales_arr['sales_item_discount']   = $item_discount;
         $sales_arr['sales_discount']        = $discount;
         $sales_arr['sales_total']           = $total;
-        // $sales_arr['payment_by_card']       = $card;
-        // $sales_arr['payment_by_cash']       = $cash;
-        // $sales_arr['payment_by_cheque']     = $chaque;
-        // $sales_arr['payment_by_gift_card']  = $gift_card;
+        $sales_arr['payment_by_card']       = $card;
+        $sales_arr['payment_by_cash']       = $cash;
+        $sales_arr['payment_by_cheque']     = $chaque;
+        $sales_arr['payment_by_gift_card']  = $gift_card;
         $sales_arr['sales_tender']          = $sales_tender;
         $sales_arr['sales_status']          = 3;
         $sales_arr['salse_date']            = date('Y-m-d');
         $sales_arr['check_out_time']        = date('h:m:s');
-        //$sales_arr['sales_change']          = ($sales_arr['sales_sub_total']-$sales_arr['sales_tender']);
-        //if ($sales_arr['sales_change'] > 0) {
-            //$sales_arr['sales_balance']     = ($sales_arr['sales_total']-($sales_arr['payment_by_card']+$sales_arr['payment_by_cash']+$sales_arr['payment_by_cheque']+$sales_arr['payment_by_gift_card']));
-            //$sales_arr['sales_change']      = 0;
-        //}else{
-            //$sales_arr['sales_balance']     = 0;
-        //}
-        //$sales_arr['payment_by_cash']      += $sales_arr['sales_change'];
+        $sales_arr['sales_total']          -= ($sales_arr['sales_discount']-$sales_arr['sales_item_discount']);
+        $sales_arr['sales_total']          += $sales_arr['sales_tax'];
+        $sales_arr['sales_change']          = ($sales_arr['sales_total']-$sales_arr['sales_tender']);
+        if ($sales_arr['sales_change'] > 0) {
+            $sales_arr['sales_balance']     = ($sales_arr['sales_total']-($sales_arr['payment_by_card']+$sales_arr['payment_by_cash']+$sales_arr['payment_by_cheque']+$sales_arr['payment_by_gift_card']));
+            $sales_arr['sales_change']      = 0;
+        }else{
+            $sales_arr['sales_balance']     = 0;
+        }
+        $sales_arr['payment_by_cash']      += $sales_arr['sales_change'];
         
         $this->db->where('sales_auto_id', $sales_auto_id);
         $this->db->update('sales',$sales_arr);

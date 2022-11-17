@@ -183,10 +183,10 @@
                                 <th><?php echo $this->lang->line('employee'); ?></th>
                                 <th style="width: 150px;"><?php echo $this->lang->line('customer'); ?></th>
                                 <th style="width: 150px;"><?php echo $this->lang->line('waiter'); ?></th>
-                                <th style="width: 50px;"><?php echo $this->lang->line('discount'); ?></th>
-                                <th style="width: 50px;"><?php echo $this->lang->line('tax'); ?></th>
-                                <th style="width: 100px;"><?php echo $this->lang->line('sales_total'); ?></th>
-                                <th style="width: 100px;"><?php echo $this->lang->line('sales_balance'); ?></th>
+                                <th style="width: 100px;"><?php echo $this->lang->line('discount'); ?></th>
+                                <th style="width: 100px;"><?php echo $this->lang->line('tax'); ?></th>
+                                <th style="width: 150px;"><?php echo $this->lang->line('sales_total'); ?></th>
+                                <th style="width: 150px;"><?php echo $this->lang->line('sales_balance'); ?></th>
                                 <th style="width: 50px;"><?php echo $this->lang->line('status'); ?></th>
                                 <th style="width: 80px;"><?php echo $this->lang->line('action'); ?></th>
                             </tr>
