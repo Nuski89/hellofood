@@ -1,5 +1,5 @@
 <center>
-<div style="width: 100%;margin-top:0px;margin-bottom:0px;">
+<div style="width: 100%;margin-top:0px;margin-bottom:0px;font-size:14px;">
     <div><b><?php echo $company['company_name']; ?><br><small><?php echo $company['branch_address']; ?></small></b></div>
     <div><span><?php echo 'Sale No : '.$sales['sales_auto_id']; ?></span></div>
     <div><span>Date : <?php echo $sales['salse_date'].' '.$sales['check_in_time']; ?></span></div>
@@ -10,7 +10,7 @@
     switch (2) {
         case '1':
     ?>
-    <table cellspacing="0" border="0" class="table table-condensed table-striped" style="margin-top:5px;">
+    <table cellspacing="0" border="0" class="table table-condensed table-striped" style="margin-top:5px;font-size:10px;">
         <tbody>
             <?php
             foreach ($data as $key => $value) {
@@ -26,7 +26,7 @@
         break;
         case '2':
     ?>
-    <table cellspacing="0" border="0" class="table table-condensed table-striped" style="margin-top:5px;">
+    <table cellspacing="0" border="0" class="table table-condensed table-striped" style="margin-top:5px;font-size:10px;">
         <thead>
             <tr>
                 <th class="text-left">Product</th>
@@ -53,31 +53,30 @@
     }
     ?>
     <?php if (!empty($sales)) { ?>
-    <p style="text-align:center; font-weight:bold;font-size:16px; padding-top:2px;" colspan="2">Items <?php echo $num.' [ '.$qty.' ]'; ?></p>
+    <p style="text-align:center; font-weight:bold;font-size:10px; padding-top:2px;" colspan="2">Items <?php echo $num.' [ '.$qty.' ]'; ?></p>
     <table class="table table-condensed" cellspacing="0" border="0" style="margin-bottom:5px;">
         <tbody>
             <tr>
-                <td colspan="2" >DISC <?php echo to_local_currency($sales['sales_discount']); ?> / TAX <?php echo to_local_currency($sales['sales_tax']); ?></td>
+                <td style="font-weight:bold;font-size:10px;" colspan="2" >DISC <?php echo to_local_currency($sales['sales_discount']); ?> / TAX <?php echo to_local_currency($sales['sales_tax']); ?></td>
             </tr>
             <?php $total -= $sales['sales_discount']; $total += $sales['sales_tax']; ?>
             <tr>
-                <td style="text-align:left; font-weight:bold;font-size:16px; padding-top:5px;">Grand Total</td>
-                <td style="border-top:1px dashed #000; padding-top:5px; text-align:right; font-weight:bold;font-size:16px;"><?php echo to_local_currency($total); ?></td>
+                <td style="text-align:left; font-weight:bold;font-size:10px; padding-top:5px;">Grand Total</td>
+                <td style="border-top:1px dashed #000; padding-top:5px; text-align:right; font-weight:bold;font-size:10px;"><?php echo to_local_currency($total); ?></td>
             </tr>
             <tr>
-                <td style="text-align:left; font-weight:bold;font-size:16px; padding-top:5px;">Paid</td>
-                <td style="padding-top:5px; text-align:right; font-weight:bold;font-size:16px;"><?php echo to_local_currency($sales['sales_tender']); ?></td>
+                <td style="text-align:left; font-weight:bold;font-size:10px; padding-top:5px;">Paid</td>
+                <td style="padding-top:5px; text-align:right; font-weight:bold;font-size:10px;"><?php echo to_local_currency($sales['sales_tender']); ?></td>
             </tr>
             <tr>
-                <td style="text-align:left; font-weight:bold;font-size:16px; padding-top:5px;">Change</td>
-                <td style="padding-top:5px; text-align:right; font-weight:bold;font-size:16px;"><?php echo to_local_currency($sales['sales_change']); ?></td>
+                <td style="text-align:left; font-weight:bold;font-size:10px; padding-top:5px;">Change</td>
+                <td style="padding-top:5px; text-align:right; font-weight:bold;font-size:10px;"><?php echo to_local_currency($sales['sales_change']); ?></td>
             </tr>
         </tbody>
     </table>
     <?php } ?>
-    <div style="padding-top:10px;">
-        <span>The aromas</span>
-        <span class="text-right">Tel : <?php echo $company['branch_mobile']; ?></span>
+    <div style="padding-top:10px;font-size:12px;">
+        <span class="text-center"><?php echo $company['branch_mobile']; ?></span>
         <center><?php echo $company['branch_receipt_footer']; ?><br><?php echo $company['branch_return_policy']; ?></center>
         <center><p style="font-size:11px;">Developed By : Designer Pex <br> Tel : 0094 773 988 383</p></center>
     </div>
