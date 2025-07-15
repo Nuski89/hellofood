@@ -1,10 +1,9 @@
 <center>
 <div style="width: 350px;font-size:25px;"> 
-    <h2>Kitchen</h2>
     <div><b><?php echo $company['company_name']; ?><br><small><?php echo $company['branch_address']; ?></small></b></div>
     <div><span>Date : <?=date('Y-m-d');  ?></span></div>
-    <!-- <div><span>Waiter : Without Waiter</span></div> -->
-    <!-- <div><span>Table : Table 1</span></div> -->
+    <div><span><?php echo 'Sale No : '.$sales['sales_auto_id']; ?></span></div>
+    <?php echo($sales['waiter_auto_id']==0 ? '' :"<div><span>{$this->lang->line('waiter')} : {$sales['waiter']}</span></div>"); ?>
     <table cellspacing="0" border="0" class="table table-condensed table-striped" style="font-size:25px;">
         <thead>
             <tr>

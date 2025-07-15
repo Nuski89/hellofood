@@ -377,8 +377,8 @@
                             <a class="list-group-item waves-effect waves-block text-center" onclick="quick_pay(2,1)">
                                 <i class="fa fa-money fa-2x color"></i><br/><small>[F5]</small> <?php echo $this->lang->line('quick_pay'); ?>
                             </a>
-                            <a class="list-group-item waves-effect waves-block text-center" onclick="quick_pay(3,0)">
-                                <i class="fa fa-retweet fa-2x color"></i><br/><small>[F6]</small> <?php echo $this->lang->line('pay_new'); ?>
+                            <a class="list-group-item waves-effect waves-block text-center" onclick="print_ticket('table')">
+                                <i class="fa fa-retweet fa-2x color"></i><br/><small>[F6]</small> Table print
                             </a>
                             <a class="list-group-item waves-effect waves-block text-center" onclick="quick_pay(3,1)">
                                 <i class="fa fa-print fa-2x color"></i><br/><small>[F7]</small> <?php echo $this->lang->line('pay_print'); ?>
@@ -635,6 +635,23 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->lang->line('close'); ?></button>
                 <button type="button" class="btn btn-primary" onclick="print_ticket('kitchen')"><?php echo $this->lang->line('print'); ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="table_print_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-hand-right color" aria-hidden="true"></span>  <?php echo $this->lang->line('receipt'); ?></h4>
+            </div>
+            <div class="modal-body" id="table_print_body">
+                <p><?php echo $this->lang->line('no_record_found'); ?></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->lang->line('close'); ?></button>
+                <button type="button" class="btn btn-primary" onclick="print_ticket('table')"><?php echo $this->lang->line('print'); ?></button>
             </div>
         </div>
     </div>
@@ -1530,6 +1547,7 @@ function fetch_table_data(){
                 $('#product_overlay').show();
             },
             success: function (data) {
+                $('#table_print_body').html(data.table_print);
                 $('#kitchen_print_body').html(data.kitchen_print);
                 $('#pos_print_body').html(data.pos_print);
                 $('.void_table,.return_table').hide();
@@ -1597,6 +1615,7 @@ function fetch_pos_table_data(){
                 //$('#product_overlay').show();
             },
             success: function (data) {
+                $('#table_print_body').html(data.table_print);
                 $('#kitchen_print_body').html(data.kitchen_print);
                 $('#pos_print_body').html(data.pos_print);
                 if (jQuery.isEmptyObject(data['data'])) {
@@ -1934,7 +1953,8 @@ $(document).ready(function(){
     });
 
     shortcut.add("F6",function() {
-        quick_pay(3,0);
+        //quick_pay(3,0);
+        print_ticket('table');
     });
 
     shortcut.add("F7",function() {

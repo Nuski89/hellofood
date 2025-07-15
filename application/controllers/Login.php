@@ -49,7 +49,7 @@ class Login extends CI_Controller {
 
 	function login_submit(){
    		$this->form_validation->set_rules('username','lang:login_username','trim|valid_email|required');
-   		$this->form_validation->set_rules('password','lang:login_password','trim|min_length[8]|max_length[15]|required');
+   		$this->form_validation->set_rules('password','lang:login_password','trim|min_length[4]|max_length[10]|required');
 		if($this->form_validation->run()==FALSE){	
 			$this->index($result['message']=validation_errors(),$result['type']='error',$this->lang->line('login_make_sure_user_credentials'));
 		}else{
@@ -84,8 +84,8 @@ class Login extends CI_Controller {
 		}
 	}
 
-	function set_new_password(){	
-        $this->form_validation->set_rules('Password1','lang:login_password 1','trim|required|min_length[8]|max_length[20]');
+	function set_new_password(){
+        $this->form_validation->set_rules('Password1','lang:login_password 1','trim|required|min_length[4]|max_length[10]');
 		$this->form_validation->set_rules('Password2','lang:login_password 2','trim|required|matches[Password1]'); 
         if($this->form_validation->run()==FALSE){
         	$this->reset_password($message=validation_errors(),$type='error');
