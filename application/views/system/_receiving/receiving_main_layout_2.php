@@ -764,11 +764,11 @@ $(document).ready(function() {
     window.card                 = 0;
     window.gift_card            = 0;
     window.receiving_tender         = 0;
-    if(window.register_id==0 || window.register_id==null){
-        fetch_register_data();
-    }else{
-        fetch_holds_data();
-    }
+    // if(window.register_id==0 || window.register_id==null){
+    //     fetch_register_data();
+    // }else{
+    //     fetch_holds_data();
+    // }
     fetch_table_data();
     initialize_typeahead();
     new_code();
@@ -860,7 +860,7 @@ $(document).ready(function() {
                         window.location.href="<?php echo site_url('login/logout'); ?>";
                     }, function (dismiss) {
                         if (dismiss === 'cancel') {
-                            fetch_register_data();
+                            //fetch_register_data();
                         }
                     });
                 }
@@ -1117,7 +1117,7 @@ function set_hold(id){
                 $('#pos_type').html('<i class="fa fa-clock-o" aria-hidden="true"></i> '+(window.hold_type!=1 ? window.hold_types[window.hold_type] : '')+' '+(data['hold_type']==1 ?'Table ' :'')+data['hold_auto_id']+' '+data['check_in_time']);
                 $('#pos_user').html('<i class="fa fa-user" aria-hidden="true"></i> '+data['employee']);
                 fetch_table_data();
-                fetch_holds_data();
+                //fetch_holds_data();
                 clear_payment();
             },
             error: function () {
@@ -1662,7 +1662,7 @@ function quick_pay(type,is_print) {
                     $('#waiter_auto_id').val('');
                     $('#pos_type').html('<i class="fa fa-clock-o" aria-hidden="true"></i> ');
                     $('#pos_user').html('<i class="fa fa-user" aria-hidden="true"></i> ');
-                    fetch_holds_data();
+                    //fetch_holds_data();
                     fetch_table_data();
                 }
                 clear_payment();

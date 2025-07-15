@@ -56,4 +56,20 @@ class Model_expense extends CI_Model{
         }
         return $data_arr;
     }
+
+    function delete_expense(){
+        $this->db->trans_begin();
+        $expense_auto_id = trim($this->input->get_post('expense_auto_id'));
+        $this->db->where('expense_auto_id', $expense_auto_id);
+        $this->db->delete('expences');
+        $this->db->trans_complete();
+        if($this->db->trans_status()===0){
+            $this->db->trans_rollback();
+            $log = $this->logger->log_event(0,$this->lang->line('expense_module'),5,$this->lang->line('common_delete_failed'),$this->lang->line('expense_module'),$expense_auto_id);
+        }else{
+            $this->db->trans_commit();
+            $log = $this->logger->log_event(1,$this->lang->line('expense_module'),2,$this->lang->line('common_delete_successfully'),$this->lang->line('expense_module'),$expense_auto_id);
+        }
+        return $log;
+    }
 }

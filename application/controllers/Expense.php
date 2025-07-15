@@ -24,9 +24,10 @@ class Expense extends MYT_Controller {
         $this->datatables->add_column('expense_date','$1','print_date_format(expense_date)');
         $this->datatables->add_column('expense_amount','<span class="pull-right">$1</span>','to_local_currency(expense_amount)');
         $this->datatables->edit_column('action', '<center><span> 
-        	<a class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Delete" onclick=""><i class="fa fa-times fa-1x color"></i></a>
+        	<a class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Delete" onclick="delete_expense(\'$1\')"><i class="fa fa-times fa-1x color"></i></a>
         	<a class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Edit" onclick="edit_expense(\'$1\',\'$2\');"><i class="fa fa-pencil fa-1x color"></i></a>
-        	</span></center>', 'expense_auto_id, expense_reference');
+			<a class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="Edit" onclick="print_expense(\'$1\',\'$2\');"><i class="fa fa-print fa-1x color"></i></a>
+        	</span></center>', 'expense_auto_id', 'expense_reference');
         echo $this->datatables->generate();
 
 	}
@@ -44,6 +45,14 @@ class Expense extends MYT_Controller {
 	    }
 	}
 
+	function fetch_expense_print(){
+        $print_data = $this->expense->fetch_expense_data();
+        $data['company']       = $this->_['app'];
+        $data['data']          = $print_data;
+        $data['expense_print'] = $this->load->view('system/expenses/expense_print', $data,true);
+        echo json_encode($data);
+    }
+
 	function fetch_expense_data(){
 		echo json_encode($this->expense->fetch_expense_data());
 	}
@@ -54,5 +63,9 @@ class Expense extends MYT_Controller {
 
 	function fetch_all_expense_categories(){
 		echo json_encode($this->expense->fetch_all_expense_categories());
+	}
+
+	function delete_expense(){
+		echo json_encode($this->expense->delete_expense());
 	}
 }

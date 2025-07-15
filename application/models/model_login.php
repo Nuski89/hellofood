@@ -2,7 +2,7 @@
 class Model_login extends CI_Model{
 
 	function authenticate_person($person_data){
-		$this->db->select('employee_auto_id,employee_login_email,employee_login_password,employee_login_status,employee_login_attempt,employee_img_path,is_admin,is_active,branch_auto_id,company_auto_id,employee_name');
+		$this->db->select('employee_auto_id,employee_login_email,employee_login_password,employee_login_status,employee_login_attempt,employee_img_path,is_admin,is_active,branch_auto_id,company_auto_id,employee_name,group_name');
 		$this->db->where("employee_login_email",$person_data['userN']);
 		$login_data = $this->db->get("hrm_employees")->row_array();
 		if (!empty($login_data)) {
@@ -16,6 +16,7 @@ class Model_login extends CI_Model{
 						'employee_img_path'		=> $login_data['employee_img_path'],
 						'register_auto_id'		=> 0,
 						'branch_auto_id'		=> $login_data['branch_auto_id'],
+						'group_name'			=> $login_data['group_name'],
 						'company_auto_id'		=> $login_data['company_auto_id'],
 						'is_admin'				=> $login_data['is_admin'],
 						'hold_type'				=> 0,

@@ -38,6 +38,23 @@
         </div>
     </div>
 </section>
+<div id="expenses_print_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-hand-right color" aria-hidden="true"></span>  <?php echo $this->lang->line('receipt'); ?></h4>
+            </div>
+            <div class="modal-body" id="expenses_print_body">
+                <p><?php echo $this->lang->line('no_record_found'); ?></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $this->lang->line('close'); ?></button>
+                <button type="button" class="btn btn-primary" onclick="print_ticket('expenses')"><?php echo $this->lang->line('print'); ?></button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
 var expense_auto_id;
 var expense_table;
@@ -113,6 +130,62 @@ function fetch_expense_table(){
     expense_table.on('click', 'tr', function () {
         $('.dataTable tr').removeClass('selected_table_row');
         $(this).toggleClass('selected_table_row');
+    });
+}
+
+function delete_expense(id){
+    $.ajax({
+        url:"<?php echo site_url('expense/delete_expense'); ?>",
+        type:"POST",
+        dataType: 'json',
+        data :{'expense_auto_id':id},
+        success:function(data){
+            simple_alert(data['log_status'],data['title'],data['message']);
+            fetch_expense_table();
+        }
+    }); 
+}
+
+function print_ticket(div) {
+    var contents = document.getElementById(div+"_print_body").innerHTML;
+    var frame1 = document.createElement('iframe');
+    frame1.name = "frame1";
+    frame1.style.position = "absolute";
+    frame1.style.top = "-1000000px";
+    document.body.appendChild(frame1);
+    var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+    frameDoc.document.open();
+    frameDoc.document.write('<html><head><title>'+div+'</title>');
+    frameDoc.document.write('</head><body>');
+    frameDoc.document.write(contents);
+    frameDoc.document.write('</body></html>');
+    frameDoc.document.close();
+    setTimeout(function () {
+        window.frames["frame1"].focus();
+        window.frames["frame1"].print();
+        document.body.removeChild(frame1);
+    }, 200);
+    return false;
+}
+
+function print_expense(expense_auto_id){
+    $.ajax({
+        type:"POST",
+        dataType: 'json',
+        data:{'expense_auto_id':expense_auto_id},
+        url: "<?php echo site_url('expense/fetch_expense_print'); ?>",
+        beforeSend: function () {
+            $('#product_overlay').show();
+        },
+        success: function (data) {
+            $('#expenses_print_body').html(data.expense_print);                
+            $('#product_overlay').hide();
+            $('#expenses_print_modal').modal('show');
+        },
+        error: function () {
+            $('#product_overlay').hide();
+            simple_alert(6,'e','<?php echo $this->lang->line('error_occurred'); ?>');
+        }
     });
 }
 

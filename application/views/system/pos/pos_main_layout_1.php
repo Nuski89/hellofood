@@ -794,9 +794,9 @@ $(document).ready(function() {
     window.gift_card            = 0;
     window.sales_tender         = 0;
     if(window.register_id==0 || window.register_id==null){
-        fetch_register_data();
+        //fetch_register_data();
     }else{
-        fetch_holds_data();
+        //fetch_holds_data();
     }
     fetch_table_data();
     initialize_typeahead();
@@ -1156,7 +1156,7 @@ function set_hold(id){
                 $('#pos_type').html('<i class="fa fa-clock-o" aria-hidden="true"></i> '+(window.hold_type!=1 ? window.hold_types[window.hold_type] : '')+' '+(data['hold_type']==1 ?'Table ' :'')+data['hold_auto_id']+' '+data['check_in_time']);
                 $('#pos_user').html('<i class="fa fa-user" aria-hidden="true"></i> '+data['employee']);
                 fetch_table_data();
-                fetch_holds_data();
+                //fetch_holds_data();
                 clear_payment();
             },
             error: function () {
@@ -1178,7 +1178,7 @@ function print_ticket(div) {
     var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
     frameDoc.document.open();
     frameDoc.document.write('<html><head><title>'+div+'</title>');
-    frameDoc.document.write('</head><body>');
+    frameDoc.document.write('</head><body style="font-size:20px;">');
     frameDoc.document.write(contents);
     frameDoc.document.write('</body></html>');
     frameDoc.document.close();
@@ -1700,7 +1700,7 @@ function quick_pay(type,is_print) {
                     $('#waiter_auto_id').val('');
                     $('#pos_type').html('<i class="fa fa-clock-o" aria-hidden="true"></i> ');
                     $('#pos_user').html('<i class="fa fa-user" aria-hidden="true"></i> ');
-                    fetch_holds_data();
+                    //fetch_holds_data();
                     fetch_table_data();
                 }
                 clear_payment();
@@ -1881,7 +1881,7 @@ document.querySelector('#btn-cancel-void').onclick = function(){
                     $('#product_overlay').show();
                 },
                 success: function (data) {
-                     window.sales_auto_id = 0;
+                    window.sales_auto_id = 0;
                     $('#product_overlay').hide();
                     simple_alert(data['log_status'],data['title'],data['message']);
                     if (data['status']) {

@@ -45,21 +45,21 @@
                             <label for="product_cost"><?php echo $this->lang->line('product_cost').required_mark(); ?></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><?php echo $this->_['app']['company_currency_code']; ?></div>
-                                <input type="text" class="form-control number" id="product_cost" name="product_cost" placeholder="0.00" required>
+                                <input type="text" value="350" class="form-control number" id="product_cost" name="product_cost" placeholder="0.00" required>
                             </div>
                         </div>
                         <div class="form-group col-sm-2">
                             <label for="product_price"><?php echo $this->lang->line('selling_price').required_mark(); ?></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><?php echo $this->_['app']['company_currency_code']; ?></div>
-                                <input type="text" class="form-control number" id="product_price" name="product_price" placeholder="0.00" required>
+                                <input type="text" value="350" class="form-control number" id="product_price" name="product_price" placeholder="0.00" required>
                             </div>
                         </div>
                         <div class="form-group col-sm-2">
                             <label for="product_price"><?php echo $this->lang->line('selling_wholesale_price'); ?></label>
                             <div class="input-group">
                                 <div class="input-group-addon"><?php echo $this->_['app']['company_currency_code']; ?></div>
-                                <input type="text" class="form-control number" id="product_wholesale_price" name="product_wholesale_price" placeholder="0.00" required>
+                                <input type="text" value="350" class="form-control number" id="product_wholesale_price" name="product_wholesale_price" placeholder="0.00" required>
                             </div>
                         </div>
                         <div class="form-group col-sm-2">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group col-sm-2">
                             <label for="product_reorder_level"><?php echo pop_over($this->lang->line('reorder_level'),'top','Enter a value that system will remind you when your product decrease to that level. <br/>(Ex : 10, 25, 50)',1); ?></label>
-                            <input type="text" class="form-control number" id="product_reorder_level" name="product_reorder_level" placeholder="00">
+                            <input type="text" value="10" class="form-control number" id="product_reorder_level" name="product_reorder_level" placeholder="00">
                         </div>
                         <div class="form-group col-sm-2">
                             <label for="warranty_period"><?php echo $this->lang->line('warranty_period'); ?></label>

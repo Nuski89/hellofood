@@ -12,6 +12,7 @@ class MYT_Controller extends CI_Controller {
             $this->_['status']             = TRUE;  
             $this->_['company_auto_id']    = $CI->session->userdata("company_auto_id");
             $this->_['branch_auto_id']     = $CI->session->userdata("branch_auto_id");
+            $this->_['group_name']         = $CI->session->userdata("group_name");
             $this->_['app']                = $CI->general->fetch_config($this->_['branch_auto_id'],$this->_['company_auto_id']);
             $this->_['employee_auto_id']   = $CI->session->userdata("employee_auto_id");
             $this->_['employee_name']      = ucwords($CI->session->userdata("employee_name"));

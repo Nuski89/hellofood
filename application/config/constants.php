@@ -96,8 +96,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('SOCKET_STATUS') OR define('SOCKET_STATUS',0); // 0:False : 1:True
 define('APPLICATION_VERSION', 1.01);
 defined('CURRENT_D') OR define('CURRENT_D',strtotime("now"));
-defined('EXPIRED_D') OR define('EXPIRED_D',strtotime('2020-06-30')); 
+defined('EXPIRED_D') OR define('EXPIRED_D',strtotime('2025-06-30')); 
 
 defined('CURRENT_P') OR define('CURRENT_P',0);
 defined('EXPIRED_P') OR define('EXPIRED_P',0); 
-defined('LANUAGE_STATUS') OR define('LANUAGE_STATUS',1); 
+defined('LANUAGE_STATUS') OR define('LANUAGE_STATUS',0); 
