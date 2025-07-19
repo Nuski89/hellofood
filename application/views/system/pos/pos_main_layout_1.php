@@ -125,9 +125,25 @@
                         <a class="list-group-item waves-effect waves-block text-center" data-toggle="modal" data-target="#payment_modal">
                             <i class="fa fa-credit-card fa-2x color"></i><br/><small>[F4]</small> <?php echo $this->lang->line('pay'); ?>
                         </a>
+                        <a class="list-group-item waves-effect waves-block text-center" onclick="print_ticket('kitchen')">
+                            <i class="fa fa-cutlery fa-2x color"></i><br/><small>[F9]</small> <?php echo $this->lang->line('kitchen_print'); ?>
+                        </a>
+                        <a class="list-group-item waves-effect waves-block text-center" onclick="print_ticket('table')">
+                            <i class="fa fa-retweet fa-2x color"></i><br/><small>[F6]</small> Table print
+                        </a>
                         <a class="list-group-item waves-effect waves-block text-center" onclick="quick_pay(2,1)">
                             <i class="fa fa-money fa-2x color"></i><br/><small>[F5]</small> <?php echo $this->lang->line('quick_pay'); ?>
                         </a>
+                        <a class="list-group-item waves-effect waves-block text-center" onclick="quick_pay(3,0)">
+                            <i class="fa fa-money fa-2x color"></i><br/><small></small> <?php echo $this->lang->line('pay'); ?>
+                        </a>
+                        <a class="list-group-item waves-effect waves-block text-center" onclick="quick_pay(3,1)">
+                            <i class="fa fa-print fa-2x color"></i><br/><small>[F7]</small> <?php echo $this->lang->line('pay_print'); ?>
+                        </a>
+                    </div>
+                    <div class="operation-btns">
+                        
+                        
                         <a class="list-group-item waves-effect waves-block text-center" id="btn-cancel-void">
                             <i class="fa fa-trash-o fa-2x color"></i><br/><small>[F10]</small> <?php echo $this->lang->line('cancel'); ?>
                         </a>
@@ -140,9 +156,9 @@
                         <a class="list-group-item waves-effect waves-block text-center">
                             <i class="fa fa-repeat fa-2x color"></i><br/>Return
                         </a>
-                        <a class="list-group-item waves-effect waves-block text-center" onclick="close_register_modal()">
+                        <!-- <a class="list-group-item waves-effect waves-block text-center" onclick="close_register_modal()">
                             <i class="fa fa-sign-out fa-2x color"></i><br/><?php echo $this->lang->line('close_register'); ?>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <div class="col-md-10 pos-tab">
