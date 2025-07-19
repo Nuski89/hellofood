@@ -180,6 +180,7 @@
                                 <th style="width: 10px;">#</th>
                                 <th style="width: 50px;"><?php echo $this->lang->line('hold_type'); ?></th>
                                 <th style="width: 120px;"><?php echo $this->lang->line('time'); ?></th>
+                                <th style="width: 50px;">Sales ID</th>
                                 <th><?php echo $this->lang->line('employee'); ?></th>
                                 <th style="width: 150px;"><?php echo $this->lang->line('customer'); ?></th>
                                 <th style="width: 150px;"><?php echo $this->lang->line('waiter'); ?></th>
@@ -448,6 +449,7 @@ function fetch_sales_table(){
             {"data": "sales_auto_id"},
             {"data": "hold_type"},
             {"data": "time"},
+            {"data": "sales_auto_id"},
             {"data": "employee"},
             {"data": "customer"},
             {"data": "waiter"},
