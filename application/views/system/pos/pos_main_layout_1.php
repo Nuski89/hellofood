@@ -142,20 +142,19 @@
                         </a>
                     </div>
                     <div class="operation-btns">
-                        
-                        
-                        <a class="list-group-item waves-effect waves-block text-center" id="btn-cancel-void">
-                            <i class="fa fa-trash-o fa-2x color"></i><br/><small>[F10]</small> <?php echo $this->lang->line('cancel'); ?>
-                        </a>
-                        <a class="list-group-item waves-effect waves-block text-center">
-                            <i class="fa fa-list-alt fa-2x color"></i><br/><?php echo $this->lang->line('order_list'); ?>
-                        </a>
                         <a class="list-group-item waves-effect waves-block text-center" data-toggle="modal" data-target="#bill_recall_modal">
                             <i class="fa fa-list-ol fa-2x color"></i><br/><small>[F12]</small> <?php echo $this->lang->line('bill_recall'); ?>
                         </a>
-                        <a class="list-group-item waves-effect waves-block text-center">
-                            <i class="fa fa-repeat fa-2x color"></i><br/>Return
+                        <a class="list-group-item waves-effect waves-block text-center" id="btn-cancel-void">
+                            <i class="fa fa-trash-o fa-2x color"></i><br/><small>[F10]</small> <?php echo $this->lang->line('cancel'); ?>
                         </a>
+                        <!-- <a class="list-group-item waves-effect waves-block text-center">
+                            <i class="fa fa-list-alt fa-2x color"></i><br/><?php echo $this->lang->line('order_list'); ?>
+                        </a> -->
+                        
+                        <!-- <a class="list-group-item waves-effect waves-block text-center">
+                            <i class="fa fa-repeat fa-2x color"></i><br/>Return
+                        </a> -->
                         <!-- <a class="list-group-item waves-effect waves-block text-center" onclick="close_register_modal()">
                             <i class="fa fa-sign-out fa-2x color"></i><br/><?php echo $this->lang->line('close_register'); ?>
                         </a> -->
@@ -304,7 +303,7 @@
                     <label for="item_name" class="col-sm-4 control-label"><?php echo pop_over($this->lang->line('code'),'top','Index number of your menu item.',1); ?></label>
                     <div class="col-sm-6">
                     <div class="input-group">
-                        <input type="text" class="form-control number" id="product_code" name="product_code" placeholder="<?php echo $this->lang->line('code'); ?>" value="<?php echo $product_code; ?>" required>
+                        <input type="text" class="form-control number" id="product_code" name="product_code" placeholder="<?php echo $this->lang->line('code'); ?>" value="<?=$product_code ?? ''; ?>" required>
                         <span class="input-group-btn">
                             <button class="btn btn-default" onclick="new_code()" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                         </span>
@@ -826,6 +825,7 @@ $(document).ready(function() {
     window.card                 = 0;
     window.gift_card            = 0;
     window.sales_tender         = 0;
+    fetch_holds_data();
     if(window.register_id==0 || window.register_id==null){
         //fetch_register_data();
     }else{
@@ -1060,8 +1060,8 @@ function fetch_holds_data(){
             $('#product_overlay').hide();
             $('#bill_body').empty();
             if (!jQuery.isEmptyObject(data['holds'])) {
-               var status = 1;
-               var x =1;
+                var status = 1;
+                var x =1;
                 $.each(data['holds'], function (val, text) {
                     $('#bill_body').append('<tr><td>'+x+' </td><td>'+window.hold_types[text['hold_type']]+' '+(text['hold_type']==1 ?'Table ' :'')+text['hold_auto_id']+'</td><td>'+text['sales_auto_id']+'</td><td>'+text['employee']+'</td><td>'+text['check_in_time']+'</td><td><a onclick="set_hold(\''+text['hold_auto_id']+'~'+text['hold_type']+'\')" class="btn btn-primary pull-right"><i class="fa fa-refresh" aria-hidden="true"></i></a></td></tr>');
                     if (window.hold_auto_id==text['hold_auto_id'] && window.hold_type==text['hold_type']) {

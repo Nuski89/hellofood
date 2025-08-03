@@ -228,10 +228,20 @@ class Model_pos extends CI_Model{
         $this->db->where("branch_auto_id",$this->_['branch_auto_id']);
         $this->db->where("company_auto_id",$this->_['company_auto_id']);
         $data = $this->db->get()->row_array();
+
+        $this->db->select("sales_id");
+        $this->db->order_by("sales_id", "desc");
+        $this->db->from("sales");
+        $this->db->where("salse_date",$this->_['current_date']);
+        $this->db->where("hold_type",$hold_type);
+        $this->db->where("branch_auto_id",$this->_['branch_auto_id']);
+        $this->db->where("company_auto_id",$this->_['company_auto_id']);
+        $sales_id = $this->db->get()->row('sales_id');
         
         $hold_auto_id = $data['hold_auto_id'];
         if ($auto_id==0) {
             unset($data['sales_auto_id']);
+            $data['sales_id']           = (intval($sales_id)+1);
             $data['hold_auto_id']       = ($hold_auto_id+1);
             $data['hold_type']          = $hold_type;
             $data['check_in_time']      = date('h:m:s');
@@ -249,6 +259,7 @@ class Model_pos extends CI_Model{
             $this->db->insert('sales', $data); 
             $data['sales_auto_id']= $this->db->insert_id();
         }elseif(empty($data)) {
+            $data['sales_id']           = (intval($sales_id)+1);
             $data['hold_auto_id']       = $auto_id;
             $data['hold_type']          = $hold_type;
             $data['check_in_time']      = date('h:m:s');
@@ -263,7 +274,7 @@ class Model_pos extends CI_Model{
             $data['employee']           = $this->_['employee_name'];
             $data['branch_auto_id']     = $this->_['branch_auto_id'];
             $data['company_auto_id']    = $this->_['company_auto_id'];
-            $this->db->insert('sales', $data); 
+            $this->db->insert('sales', $data);
             $data['sales_auto_id']= $this->db->insert_id();
         }
         $data['sales_auto_id']= $data['sales_auto_id'];

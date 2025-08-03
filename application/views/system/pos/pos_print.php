@@ -1,7 +1,7 @@
 <center>
 <div style="width: 100%;margin-top:0px;margin-bottom:0px;font-size:18px;">
     <div><b><?php echo $company['company_name']; ?><br><small><?php echo $company['branch_address']; ?></small></b></div>
-    <div><span><?php echo 'Sale No : '.$sales['sales_auto_id']; ?></span></div>
+    <div><span><?php echo 'Sale No : '.$sales['sales_id']; ?></span></div>
     <div><span>Date : <?php echo $sales['salse_date'].' '.$sales['check_in_time']; ?></span></div>
     <?php echo($sales['waiter_auto_id']==0 ? '' :"<div><span>{$this->lang->line('waiter')} : {$sales['waiter']}</span></div>"); ?>
     <?php echo($sales['customer_auto_id']==0?'':"<div><span>{$this->lang->line('customer')} : {$sales['customer']}</span></div>"); ?>

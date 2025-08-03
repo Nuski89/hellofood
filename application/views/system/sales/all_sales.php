@@ -449,7 +449,7 @@ function fetch_sales_table(){
             {"data": "sales_auto_id"},
             {"data": "hold_type"},
             {"data": "time"},
-            {"data": "sales_auto_id"},
+            {"data": "sales_id"},
             {"data": "employee"},
             {"data": "customer"},
             {"data": "waiter"},

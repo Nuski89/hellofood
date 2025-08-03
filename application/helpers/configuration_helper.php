@@ -194,8 +194,8 @@ if (!function_exists('to_currency')) {
 if (!function_exists('to_local_currency')) {
     function to_local_currency($number){
         $CI =& get_instance();
-        $currency_symbol = $CI->_['app']['company_currency_symbol'] ? $CI->_['app']['company_currency_symbol'] : '';
-        $thousands_separator = $CI->_['app']['company_currency_separator'] ? $CI->_['app']['company_currency_separator'] : '';
+        $currency_symbol = $CI->_['app']['company_currency_symbol'] ?? '';
+        $thousands_separator = $CI->_['app']['company_currency_separator'] ?? '';
         $decimals = $CI->_['app']['company_currency_decimal'] ? $CI->_['app']['company_currency_decimal'] : 2;
         // the conversion function needs a non null var, so if the number is null set it to 0
         if(empty($number)){
@@ -212,8 +212,8 @@ if (!function_exists('to_local_currency')) {
 if (!function_exists('to_currency_only')) {
     function to_currency_only($number){
         $CI =& get_instance();
-        $thousands_separator = $CI->_['app']['company_currency_separator'] ? $CI->_['app']['company_currency_separator'] : '';
-        $decimals = $CI->_['app']['company_currency_decimal'] ? $CI->_['app']['company_currency_decimal'] : 2;
+        $thousands_separator = $CI->_['app']['company_currency_separator'] ?? '';
+        $decimals = $CI->_['app']['company_currency_decimal'] ?? 2;
         if(empty($number)){
             $number = 0;
         }
@@ -228,8 +228,8 @@ if (!function_exists('to_currency_only')) {
 if (!function_exists('to_total_currency')) {
     function to_total_currency($amount,$qty){
         $CI =& get_instance();
-        $thousands_separator = $CI->_['app']['company_currency_separator'] ? $CI->_['app']['company_currency_separator'] : '';
-        $decimals = $CI->_['app']['company_currency_decimal'] ? $CI->_['app']['company_currency_decimal'] : 2;
+        $thousands_separator = $CI->_['app']['company_currency_separator'] ?? '';
+        $decimals = $CI->_['app']['company_currency_decimal'] ?? 2;
         $number = ($amount*$qty);
         if(empty($number)){
             $number = 0;

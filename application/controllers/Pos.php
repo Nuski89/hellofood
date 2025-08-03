@@ -4,7 +4,7 @@ class Pos extends MYT_Controller {
 	function __construct(){
         parent::__construct();
 		$this->load->model('Model_pos','pos');
-   	}
+    }
 
 	function index(){
 		$data['title']   		= $this->lang->line('terminal').' - 1';
