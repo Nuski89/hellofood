@@ -29,6 +29,7 @@ class Pos extends MYT_Controller {
         $data['company']       = $this->_['app'];
         $data['data']          = $print_data['data'];
         $data['sales']         = $print_data['sales'];
+        $data['table_arr']     = $this->pos->fetch_branch();
         $data['table_print']   = $this->load->view('system/pos/table_print', $data,true);
         $data['kitchen_print'] = $this->load->view('system/pos/kitchen_print', $data,true);
         $data['pos_print']     = $this->load->view('system/pos/pos_print', $data,true);

@@ -319,6 +319,19 @@ class Model_pos extends CI_Model{
         return $log;
     }
 
+    function fetch_branch(){
+    	$data_arr = array();
+        $this->db->select('*');
+        $this->db->from('tables');
+        $this->db->where("branch_auto_id",$this->_['branch_auto_id']);
+        $this->db->where("company_auto_id",$this->_['company_auto_id']);
+        $arr = $this->db->get()->result_array();
+        foreach ($arr as $value) {
+            $data_arr[$value['table_auto_id']] = $value['table_name'];
+        }
+        return $data_arr;
+    }
+
     function void_transaction(){
         $this->db->trans_begin();
         $transaction_auto_id = trim($this->input->get_post('transaction_auto_id'));

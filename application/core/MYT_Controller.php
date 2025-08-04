@@ -6,10 +6,10 @@ class MYT_Controller extends CI_Controller {
         $CI =& get_instance();
         $this->_['status']   = FALSE;
         //$this->output->enable_profiler(True);
-        if (!$CI->session->has_userdata('status')) {      	
+        if (!$CI->session->has_userdata('status')) {
             redirect(site_url('login/session_expaide')); 
         }else{
-            $this->_['status']             = TRUE;  
+            $this->_['status']             = TRUE;
             $this->_['company_auto_id']    = $CI->session->userdata("company_auto_id");
             $this->_['branch_auto_id']     = $CI->session->userdata("branch_auto_id");
             $this->_['group_name']         = $CI->session->userdata("group_name");
@@ -24,7 +24,7 @@ class MYT_Controller extends CI_Controller {
             $this->_['current_date_time']  = date('Y-m-d h:i:s');
             $this->_['language']           = ($CI->session->userdata("language") ? $CI->session->userdata("language") : $this->_['app']['branch_language']);
             $this->lang->load('all', $this->_['language']);
-            $this->_['location_auto_id']   = '';  
+            $this->_['location_auto_id']   = '';
             date_default_timezone_set($this->_['app']['branch_timezone']);
         }
 	}
