@@ -783,11 +783,11 @@ $(document).ready(function() {
     window.card                 = 0;
     window.gift_card            = 0;
     window.sales_tender         = 0;
-    // if(window.register_id==0 || window.register_id==null){
-    //     fetch_register_data();
-    // }else{
-    //     fetch_holds_data();
-    // }
+    if(window.register_id==0 || window.register_id==null){
+        fetch_register_data();
+    }else{
+        fetch_holds_data();
+    }
     fetch_table_data();
     initialize_typeahead();
     new_code();
