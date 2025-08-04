@@ -15,7 +15,7 @@ class Sales extends MYT_Controller {
 
 	function fetch_sales(){
   		$this->load->library('datatables');
-        $this->datatables->select("sales_auto_id,employee,waiter,customer,hold_type,check_in_time,check_out_time,(sales_item_discount+sales_discount) as sales_discount,sales_tax,sales_status,sales_total,sales_balance");
+        $this->datatables->select("sales_auto_id,sales_id,salse_date,employee,waiter,customer,hold_type,check_in_time,check_out_time,(sales_item_discount+sales_discount) as sales_discount,sales_tax,sales_status,sales_total,sales_balance");
         $this->datatables->from('sales');
         $this->datatables->where("company_auto_id={$this->_['company_auto_id']}");
         $this->datatables->add_column('time','<span>$1 - $2</span>','check_in_time,check_out_time');

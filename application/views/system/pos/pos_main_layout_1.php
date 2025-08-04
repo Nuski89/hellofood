@@ -122,8 +122,8 @@
                         </a>
                     </div>
                     <div class="operation-btns">
-                        <a class="list-group-item waves-effect waves-block text-center" data-toggle="modal" data-target="#payment_modal">
-                            <i class="fa fa-credit-card fa-2x color"></i><br/><small>[F4]</small> <?php echo $this->lang->line('pay'); ?>
+                        <a class="list-group-item waves-effect waves-block text-center" data-toggle="modal" data-target="#bill_recall_modal">
+                            <i class="fa fa-list-ol fa-2x color"></i><br/><small>[F12]</small> <?php echo $this->lang->line('bill_recall'); ?>
                         </a>
                         <a class="list-group-item waves-effect waves-block text-center" onclick="print_ticket('kitchen')">
                             <i class="fa fa-cutlery fa-2x color"></i><br/><small>[F9]</small> <?php echo $this->lang->line('kitchen_print'); ?>
@@ -142,8 +142,9 @@
                         </a>
                     </div>
                     <div class="operation-btns">
-                        <a class="list-group-item waves-effect waves-block text-center" data-toggle="modal" data-target="#bill_recall_modal">
-                            <i class="fa fa-list-ol fa-2x color"></i><br/><small>[F12]</small> <?php echo $this->lang->line('bill_recall'); ?>
+                        
+                        <a class="list-group-item waves-effect waves-block text-center" data-toggle="modal" data-target="#payment_modal">
+                            <i class="fa fa-credit-card fa-2x color"></i><br/><small>[F4]</small> <?php echo $this->lang->line('pay'); ?>
                         </a>
                         <a class="list-group-item waves-effect waves-block text-center" id="btn-cancel-void">
                             <i class="fa fa-trash-o fa-2x color"></i><br/><small>[F10]</small> <?php echo $this->lang->line('cancel'); ?>
@@ -1968,7 +1969,6 @@ $(document).ready(function(){
     });
 
     shortcut.add("F6",function() {
-        //quick_pay(3,0);
         print_ticket('table');
     });
 
@@ -1985,7 +1985,7 @@ $(document).ready(function(){
     });
 
     shortcut.add("F10",function() {
-
+        quick_pay(3,0);
     });
 
     shortcut.add("F11",function() {
