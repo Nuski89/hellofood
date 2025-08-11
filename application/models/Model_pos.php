@@ -190,7 +190,7 @@ class Model_pos extends CI_Model{
     function fetch_holds_data(){
         $data = array();
         $register_id    = $this->session->userdata('register_auto_id');
-        $this->db->select("table_auto_id,table_name,number_of_persons,customer_auto_id,waiter_auto_id,waiter,customer, hold_auto_id,sales_auto_id,check_in_time");
+        $this->db->select("table_auto_id,table_name,number_of_persons,customer_auto_id,waiter_auto_id,waiter,customer, hold_auto_id,sales_auto_id,sales_id,check_in_time");
         $this->db->from("tables");
         $this->db->join('sales', "sales.hold_auto_id=tables.table_auto_id and hold_type=1 and sales_status=2 and register_auto_id={$register_id}",'left');
         $this->db->order_by("table_auto_id", "asc"); 

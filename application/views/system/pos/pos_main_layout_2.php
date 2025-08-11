@@ -1064,7 +1064,7 @@ function close_register_modal(){
             stop_loading();
             if (!jQuery.isEmptyObject(data['register']['register_auto_id'])) {
                 window.register_id = data['register']['register_auto_id'];
-                //fetch_holds_data();
+                fetch_holds_data();
                 net_total = parseFloat(data['register']['opening_blance']);
                 net_total += parseFloat(data['amount']['payment_by_cash']);
                 net_total += parseFloat(data['amount']['payment_by_card']);

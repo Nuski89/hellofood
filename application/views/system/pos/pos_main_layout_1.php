@@ -1111,7 +1111,7 @@ function close_register_modal(){
             stop_loading();
             if (!jQuery.isEmptyObject(data['register']['register_auto_id'])) {
                 window.register_id = data['register']['register_auto_id'];
-                //fetch_holds_data();
+                fetch_holds_data();
                 net_total = parseFloat(data['register']['opening_blance']);
                 net_total += parseFloat(data['amount']['payment_by_cash']);
                 net_total += parseFloat(data['amount']['payment_by_card']);
@@ -1189,7 +1189,7 @@ function set_hold(id){
                 $('#pos_type').html('<i class="fa fa-clock-o" aria-hidden="true"></i> '+(window.hold_type!=1 ? window.hold_types[window.hold_type] : '')+' '+(data['hold_type']==1 ?'Table ' :'')+data['hold_auto_id']+' '+data['check_in_time']);
                 $('#pos_user').html('<i class="fa fa-user" aria-hidden="true"></i> '+data['employee']);
                 fetch_table_data();
-                //fetch_holds_data();
+                fetch_holds_data();
                 clear_payment();
             },
             error: function () {
@@ -1735,7 +1735,7 @@ function quick_pay(type,is_print) {
                     $('#waiter_auto_id').val('');
                     $('#pos_type').html('<i class="fa fa-clock-o" aria-hidden="true"></i> ');
                     $('#pos_user').html('<i class="fa fa-user" aria-hidden="true"></i> ');
-                    //fetch_holds_data();
+                    fetch_holds_data();
                     fetch_table_data();
                 }
                 clear_payment();
