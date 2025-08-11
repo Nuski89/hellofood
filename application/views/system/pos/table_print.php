@@ -25,13 +25,13 @@
     } ?>
     <div><span><?php echo $status.' #'.$sales['sales_id']; ?></span></div>
     <?php $total = 0; $num=0; $qty=0; ?>
-    <table cellspacing="0" border="0" class="table table-condensed table-striped" style="margin-top:5px;font-size:16px;">
+    <table cellspacing="0" border="0" class="table table-condensed table-striped" style="margin-top:5px;font-size:20px;">
         <tbody>
             <?php
             foreach ($data as $key => $value) {
                 $num = ($key+1);
-                $price = to_currency_only($value['net_amount']);
-                echo "<tr><td>{$num}. # {$value['id']} ( {$value['amount']} - {$value['discount']} ) * {$value['qty']} <span class='pull-right'> {$price}</span><br>{$value['name']}</td></tr>";
+                $price = to_currency_only($value['net_amount']); # {$value['id']}
+                echo "<tr><td>{$num}. ( {$value['amount']} - {$value['discount']} ) * {$value['qty']} <span class='pull-right'> {$price}</span><br>{$value['name']}</td></tr>";
                 $total += $value['net_amount'];
                 $qty +=$value['qty'];
             } ?>

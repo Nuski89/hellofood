@@ -36,8 +36,8 @@
             <?php
             foreach ($data as $key => $value) {
                 $num = ($key+1);
-                $price = to_currency_only($value['net_amount']);
-                echo "<tr><td>{$num}. # {$value['id']} ( {$value['amount']} - {$value['discount']} ) * {$value['qty']} <span class='pull-right'> {$price}</span><br>{$value['name']}</td></tr>";
+                $price = to_currency_only($value['net_amount']); //# {$value['id']}
+                echo "<tr><td>{$num}. ( {$value['amount']} - {$value['discount']} ) * {$value['qty']} <span class='pull-right'> {$price}</span><br>{$value['name']}</td></tr>";
                 $total += $value['net_amount'];
                 $qty +=$value['qty'];
             } ?>
