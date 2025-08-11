@@ -199,7 +199,7 @@ class Model_pos extends CI_Model{
         $this->db->where("tables.company_auto_id",$this->_['company_auto_id']);
         $data['tables'] = $this->db->get()->result_array();
 
-        $this->db->select("hold_auto_id,hold_type,sales_auto_id,employee,customer,customer_auto_id,waiter_auto_id,waiter,employee ,check_in_time");
+        $this->db->select("hold_auto_id,hold_type,sales_auto_id,sales_id,employee,customer,customer_auto_id,waiter_auto_id,waiter,employee ,check_in_time");
         $this->db->from("sales");
         $this->db->where("sales_status",2);
         $this->db->where("register_auto_id",$register_id);
