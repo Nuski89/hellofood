@@ -410,6 +410,7 @@
                                 <td><?php echo $this->lang->line('first_td'); ?></td>
                                 <td><?php echo $this->lang->line('title'); ?></td>
                                 <td><?php echo $this->lang->line('bill_no'); ?></td>
+                                <td><?php echo $this->lang->line('total'); ?></td>
                                 <td><?php echo $this->lang->line('employee'); ?></td>
                                 <td><?php echo $this->lang->line('check_in_time'); ?></td>
                                 <td></td>
@@ -1016,7 +1017,7 @@ function fetch_holds_data(){
                var status = 1;
                var x =1;
                 $.each(data['holds'], function (val, text) {
-                    $('#bill_body').append('<tr><td>'+x+' </td><td>'+window.hold_types[text['hold_type']]+' '+(text['hold_type']==1 ?'Table ' :'')+text['hold_auto_id']+'</td><td>'+text['sales_id']+'</td><td>'+text['employee']+'</td><td>'+text['check_in_time']+'</td><td><a onclick="set_hold(\''+text['hold_auto_id']+'~'+text['hold_type']+'\')" class="btn btn-primary pull-right"><i class="fa fa-refresh" aria-hidden="true"></i></a></td></tr>');
+                    $('#bill_body').append('<tr><td>'+x+' </td><td>'+window.hold_types[text['hold_type']]+' '+(text['hold_type']==1 ?'Table ' :'')+text['hold_auto_id']+'</td><td>'+text['sales_id']+'</td><td style="text-align: right;">'+to_currency(text['sales_total'])+'</td><td>'+text['employee']+'</td><td>'+text['check_in_time']+'</td><td><a onclick="set_hold(\''+text['hold_auto_id']+'~'+text['hold_type']+'\')" class="btn btn-primary pull-right"><i class="fa fa-refresh" aria-hidden="true"></i></a></td></tr>');
                     if (window.hold_auto_id==text['hold_auto_id'] && window.hold_type==text['hold_type']) {
                         status = 0;
                         window.sales_auto_id = text['sales_auto_id'];
