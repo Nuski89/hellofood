@@ -22,7 +22,8 @@
             $status = "Wholesale";
     } ?>
     <div><span><?php echo $status.' #'.$sales['sales_id']; ?></span></div>
-    <div><span><?php echo $sales['salse_date'].' '.$sales['check_in_time']; ?></span></div>
+    <?php $datetime = new DateTime($sales['salse_date'] . ' ' . $sales['check_in_time']); ?>
+    <div><span><?=$datetime->format('D, d M Y h:i A');  ?></span></div>
     <?php echo($sales['waiter_auto_id']==0 ? '' :"<div><span>{$this->lang->line('waiter')} : {$sales['waiter']}</span></div>"); ?>
     <?php echo($sales['customer_auto_id']==0?'':"<div><span>{$this->lang->line('customer')} : {$sales['customer']}</span></div>"); ?>
     <div><span><?php echo $this->lang->line('holds')[$sales['hold_type']].' '.$sales['hold_auto_id']; ?></span></div>

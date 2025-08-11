@@ -1,7 +1,8 @@
 <center>
 <div style="width: 350px;font-size:25px;"> 
     <div><b><?php echo $company['company_name']; ?><br><small><?php echo $company['branch_address']; ?></small></b></div>
-    <div><span><?=$sales['salse_date']." ".$sales['check_in_time'];  ?></span></div>
+    <?php $datetime = new DateTime($sales['salse_date'] . ' ' . $sales['check_in_time']); ?>
+    <div><span><?=$datetime->format('D, d M Y h:i A');  ?></span></div>
     <?php
     switch ($sales['hold_type']) {
         case '1':
