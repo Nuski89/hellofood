@@ -77,7 +77,7 @@ class Model_receiving extends CI_Model{
     //     $this->db->trans_begin();
     //     $type = $this->lang->line('created');
     //     $register_data = $this->input->post(NULL, TRUE);
-    //     $register_data['register_date']    = date('Y-m-d h:m:s');
+    //     $register_data['register_date']    = date('Y-m-d h:i:s');
     //     $register_data['register_status']  = 2;
     //     $register_data['employee_auto_id'] = $this->_['employee_auto_id'];
     //     $register_data['branch_auto_id']   = $this->_['branch_auto_id'];
@@ -226,7 +226,7 @@ class Model_receiving extends CI_Model{
             unset($data['receiving_auto_id']);
             $data['hold_auto_id']       = ($hold_auto_id+1);
             $data['hold_type']          = $hold_type;
-            $data['check_in_time']      = date('h:m:s');
+            $data['check_in_time']      = date('h:i:s');
             $data['register_auto_id']   = $register_id;
             $data['receiving_date']     = $this->_['current_date'];
             $data['customer_auto_id']   = '';
@@ -243,7 +243,7 @@ class Model_receiving extends CI_Model{
         }elseif(empty($data)) {
             $data['hold_auto_id']       = $auto_id;
             $data['hold_type']          = $hold_type;
-            $data['check_in_time']      = date('h:m:s');
+            $data['check_in_time']      = date('h:i:s');
             $data['register_auto_id']   = $register_id;
             $data['receiving_date']     = $this->_['current_date'];
             $data['customer_auto_id']   = '';
@@ -425,7 +425,7 @@ class Model_receiving extends CI_Model{
         $receiving_arr['receiving_tender']          = $receiving_tender;
         $receiving_arr['receiving_status']          = 3;
         $receiving_arr['receiving_date']            = date('Y-m-d');
-        $receiving_arr['check_out_time']        = date('h:m:s');
+        $receiving_arr['check_out_time']        = date('h:i:s');
         $receiving_arr['receiving_change']          = ($receiving_arr['receiving_sub_total']-$receiving_arr['receiving_tender']);
         if ($receiving_arr['receiving_change'] > 0) {
             $receiving_arr['receiving_balance']     = ($receiving_arr['receiving_total']-($receiving_arr['payment_by_card']+$receiving_arr['payment_by_cash']+$receiving_arr['payment_by_cheque']+$receiving_arr['payment_by_gift_card']));
@@ -603,7 +603,7 @@ class Model_receiving extends CI_Model{
     //     $this->db->trans_begin();
     //     $type = $this->lang->line('created');
     //     $register_data = $this->input->post(NULL, TRUE);
-    //     $register_data['closed_date']       = date('Y-m-d h:m:s');
+    //     $register_data['closed_date']       = date('Y-m-d h:i:s');
     //     $register_data['register_status']   = 3;
     //     $register_data['closed_by']         = $this->_['employee_name'];
     //     $register_data['cash_total']        = $amount_arr['payment_by_cash'];

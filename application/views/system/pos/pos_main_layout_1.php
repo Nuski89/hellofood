@@ -156,9 +156,9 @@
                         <!-- <a class="list-group-item waves-effect waves-block text-center">
                             <i class="fa fa-repeat fa-2x color"></i><br/>Return
                         </a> -->
-                        <!-- <a class="list-group-item waves-effect waves-block text-center" onclick="close_register_modal()">
+                        <a class="list-group-item waves-effect waves-block text-center" onclick="close_register_modal()">
                             <i class="fa fa-sign-out fa-2x color"></i><br/><?php echo $this->lang->line('close_register'); ?>
-                        </a> -->
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-10 pos-tab">
@@ -829,8 +829,10 @@ $(document).ready(function() {
     window.sales_tender         = 0;
     if(window.register_id==0 || window.register_id==null){
         fetch_register_data();
+        console.log('No Register');
     }else{
         fetch_holds_data();
+        console.log('Register Active');
     }
     fetch_table_data();
     initialize_typeahead();

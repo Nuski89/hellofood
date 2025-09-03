@@ -76,7 +76,7 @@ class Model_pos extends CI_Model{
         $this->db->trans_begin();
         $type = $this->lang->line('created');
         $register_data = $this->input->post(NULL, TRUE);
-        $register_data['register_date']    = date('Y-m-d h:m:s');
+        $register_data['register_date']    = date('Y-m-d h:i:s');
         $register_data['register_status']  = 2;
         $register_data['employee_auto_id'] = $this->_['employee_auto_id'];
         $register_data['branch_auto_id']   = $this->_['branch_auto_id'];
@@ -217,7 +217,7 @@ class Model_pos extends CI_Model{
         $hold_auto_id   = 0;
 
         $this->db->select("*");
-        $this->db->order_by("hold_auto_id", "desc"); 
+        $this->db->order_by("hold_auto_id", "desc");
         $this->db->from("sales");
         $this->db->where("sales_status",2);
         $this->db->where("hold_type",$hold_type);
@@ -244,7 +244,7 @@ class Model_pos extends CI_Model{
             $data['sales_id']           = (intval($sales_id)+1);
             $data['hold_auto_id']       = ($hold_auto_id+1);
             $data['hold_type']          = $hold_type;
-            $data['check_in_time']      = date('h:m:s');
+            $data['check_in_time']      = date('h:i:s');
             $data['register_auto_id']   = $register_id;
             $data['salse_date']         = $this->_['current_date'];
             $data['customer_auto_id']   = '';
@@ -256,13 +256,13 @@ class Model_pos extends CI_Model{
             $data['employee']           = $this->_['employee_name'];
             $data['branch_auto_id']     = $this->_['branch_auto_id'];
             $data['company_auto_id']    = $this->_['company_auto_id'];
-            $this->db->insert('sales', $data); 
+            $this->db->insert('sales', $data);
             $data['sales_auto_id']= $this->db->insert_id();
         }elseif(empty($data)) {
             $data['sales_id']           = (intval($sales_id)+1);
             $data['hold_auto_id']       = $auto_id;
             $data['hold_type']          = $hold_type;
-            $data['check_in_time']      = date('h:m:s');
+            $data['check_in_time']      = date('h:i:s');
             $data['register_auto_id']   = $register_id;
             $data['salse_date']         = $this->_['current_date'];
             $data['customer_auto_id']   = '';
@@ -457,7 +457,7 @@ class Model_pos extends CI_Model{
         $sales_arr['sales_tender']          = $sales_tender;
         $sales_arr['sales_status']          = 3;
         $sales_arr['salse_date']            = date('Y-m-d');
-        $sales_arr['check_out_time']        = date('h:m:s');
+        $sales_arr['check_out_time']        = date('h:i:s');
         $sales_arr['sales_total']          -= ($sales_arr['sales_discount']-$sales_arr['sales_item_discount']);
         $sales_arr['sales_total']          += $sales_arr['sales_tax'];
         $sales_arr['sales_change']          = ($sales_arr['sales_total']-$sales_arr['sales_tender']);
@@ -637,7 +637,7 @@ class Model_pos extends CI_Model{
         $this->db->trans_begin();
         $type = $this->lang->line('created');
         $register_data = $this->input->post(NULL, TRUE);
-        $register_data['closed_date']       = date('Y-m-d h:m:s');
+        $register_data['closed_date']       = date('Y-m-d h:i:s');
         $register_data['register_status']   = 3;
         $register_data['closed_by']         = $this->_['employee_name'];
         $register_data['cash_total']        = $amount_arr['payment_by_cash'];

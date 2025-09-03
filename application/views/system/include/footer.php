@@ -77,25 +77,29 @@
                     <tr>
                         <td>Cash</td>
                         <td><span id="expected_cash">0.00</span></td>
-                        <td><div class="form-group"><input type="text" id="counted_cash" name="counted_cash" data-type="cash" class="con_tot number" placeholder ="0.00"></div></td>
+                        <td><div class="form-group"><input type="text" id="counted_cash" name="counted_cash"  class="con_tot number" placeholder ="0.00"></div></td>
+                        <!-- data-type="cash" -->
                         <td><span id="diff_cash">0.00</span></td>
                     </tr>
                     <tr>
                         <td><?php echo $this->lang->line('credit_card'); ?></td>
                         <td><span id="expected_credit_card">0.00</span></td>
-                        <td><div class="form-group"><input type="text" id="counted_credit_card" data-type="credit_card" name="counted_credit_card" class="con_tot number" placeholder="0.00"></div></td>
+                        <td><div class="form-group"><input type="text" id="counted_credit_card"  name="counted_credit_card" class="con_tot number" placeholder="0.00"></div></td>
+                        <!-- data-type="credit_card" -->
                         <td><span id="diff_credit_card">0.00</span></td>
                     </tr>
                     <tr>
                         <td><?php echo $this->lang->line('gift_card'); ?></td>
                         <td><span id="expected_gift_card">0.00</span></td>
-                        <td><div class="form-group"><input type="text" id="counted_gift_card" data-type="gift_card" name="counted_gift_card" class="con_tot number" placeholder="0.00"></div></td>
+                        <td><div class="form-group"><input type="text" id="counted_gift_card" name="counted_gift_card" class="con_tot number" placeholder="0.00"></div></td>
+                        <!-- data-type="gift_card" -->
                         <td><span id="diff_gift_card">0.00</span></td>
                     </tr>
                     <tr>
                         <td><?php echo $this->lang->line('gift_card'); ?></td>
                         <td><span id="expected_cheque">0.00</span></td>
-                        <td><div class="form-group"><input type="text" id="counted_cheque" data-type="cheque" name="counted_cheque" class="con_tot number" placeholder="0.00"></div></td>
+                        <td><div class="form-group"><input type="text" id="counted_cheque"  name="counted_cheque" class="con_tot number" placeholder="0.00"></div></td>
+                        <!-- data-type="cheque" -->
                         <td><span id="diff_cheque">0.00</span></td>
                     </tr>
                     <tr class="warning">
