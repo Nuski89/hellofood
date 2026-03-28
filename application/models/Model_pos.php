@@ -244,7 +244,7 @@ class Model_pos extends CI_Model{
             $data['sales_id']           = (intval($sales_id)+1);
             $data['hold_auto_id']       = ($hold_auto_id+1);
             $data['hold_type']          = $hold_type;
-            $data['check_in_time']      = date('h:i:s');
+            $data['check_in_time']      = date('H:i:s');
             $data['register_auto_id']   = $register_id;
             $data['salse_date']         = $this->_['current_date'];
             $data['customer_auto_id']   = '';
@@ -262,7 +262,7 @@ class Model_pos extends CI_Model{
             $data['sales_id']           = (intval($sales_id)+1);
             $data['hold_auto_id']       = $auto_id;
             $data['hold_type']          = $hold_type;
-            $data['check_in_time']      = date('h:i:s');
+            $data['check_in_time']      = date('H:i:s');
             $data['register_auto_id']   = $register_id;
             $data['salse_date']         = $this->_['current_date'];
             $data['customer_auto_id']   = '';
@@ -457,7 +457,7 @@ class Model_pos extends CI_Model{
         $sales_arr['sales_tender']          = $sales_tender;
         $sales_arr['sales_status']          = 3;
         $sales_arr['salse_date']            = date('Y-m-d');
-        $sales_arr['check_out_time']        = date('h:i:s');
+        $sales_arr['check_out_time']        = date('H:i:s');
         $sales_arr['sales_total']          -= ($sales_arr['sales_discount']-$sales_arr['sales_item_discount']);
         $sales_arr['sales_total']          += $sales_arr['sales_tax'];
         $sales_arr['sales_change']          = ($sales_arr['sales_total']-$sales_arr['sales_tender']);
